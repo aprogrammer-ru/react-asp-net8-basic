@@ -9,13 +9,19 @@ public static class SpaExtension
         services.AddSpaStaticFiles(c => { c.RootPath = "ClientApp"; });
     }
 
-    public static void UseDefaultSpaMiddleware(this IApplicationBuilder app)
+    public static void UseDefaultSpaMiddleware(this WebApplication app)
     {
         var clientAppPath = Path.Combine(Directory.GetCurrentDirectory(), "ClientApp");
         if (Directory.Exists(clientAppPath))
         {
             app.UseSpaStaticFiles();
-            app.UseSpa(spa => { spa.Options.SourcePath = "ClientApp"; });
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+                
+               /* if(app.Environment.IsDevelopment())
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:5272");*/ //пример проксирования к серверу фронтенда
+            });
         }
     }
 

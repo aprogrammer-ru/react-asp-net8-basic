@@ -13,7 +13,7 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllers();
         builder.Services.AddCustomSwagger();
-        //builder.Services.AddDefaultSpaMiddleware();
+        builder.Services.AddDefaultSpaMiddleware();
         var app = builder.Build();
         
         // Use CORS Middleware here
@@ -26,7 +26,7 @@ public class Program
         app.MapControllers();
         
         //SPA Middlewares
-        //app.UseDefaultSpaMiddleware();
+        app.UseDefaultSpaMiddleware();
        
         app.Run();
     }
