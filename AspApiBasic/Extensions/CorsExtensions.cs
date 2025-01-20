@@ -42,7 +42,7 @@ public static class CorsExtensions
 
             options.AddPolicy(ApiCorsPolicies.AllowSpecificRoute, policy =>
             {
-                policy.WithOrigins("http://localhost:5272")
+                policy.WithOrigins("http://localhost:5683")
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials(); // Разрешить использование credentials

@@ -11,7 +11,7 @@
     volumes:
       - .:/src
   react-asp-basic-client:
-    image: react-client
+    image: react-asp-client
     build:
       context: .
       dockerfile: react-client-basic/Dockerfile
