@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspApiBasic.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using AspApiBasic.Model;
+using Microsoft.AspNetCore.Cors;
 
 namespace AspApiBasic.Controllers;
 
@@ -12,6 +14,7 @@ public class FeedbackController : ControllerBase
 
     // POST: api/feedback
     [HttpPost]
+    [EnableCors(policyName: ApiCorsPolicies.AllowSpecificRoute)]
     public IActionResult SubmitFeedback([FromBody] Feedback feedback)
     {
         if (feedback == null || string.IsNullOrEmpty(feedback.Message))
