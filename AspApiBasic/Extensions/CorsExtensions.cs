@@ -28,23 +28,25 @@ public static class CorsExtensions
 
             options.AddPolicy(ApiCorsPolicies.AllowSpecificOrigin, policy =>
             {
-                policy.WithOrigins("https://localhost:5272") // Разрешить только запросы с этого домена
+                policy.WithOrigins("http://localhost:5272") // Разрешить только запросы с этого домена
                     .WithMethods("GET", "POST") // Разрешить только GET и POST
                     .WithHeaders("Content-Type", "Authorization"); // Разрешить только указанные заголовки
             });
 
+            // Настройка политики CORS для нескольких доменов
             options.AddPolicy(ApiCorsPolicies.AllowMultipleOrigins, policy =>
             {
-                policy.WithOrigins("https://example.com","http://example.com", "http://localhost:5272") // Разрешить несколько доменов
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
+                policy.WithOrigins("https://example.com", "http://example.com", "http://localhost:5272") // Разрешить несколько доменов
+                    .AllowAnyMethod() // Разрешить любые HTTP-методы
+                    .AllowAnyHeader(); // Разрешить любые заголовки
             });
 
+            // Настройка политики CORS для конкретного маршрута
             options.AddPolicy(ApiCorsPolicies.AllowSpecificRoute, policy =>
             {
-                policy.WithOrigins("http://localhost:5683")
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
+                policy.WithOrigins("http://localhost:5288") // Разрешить запросы с указанного домена
+                    .AllowAnyMethod() // Разрешить любые HTTP-методы
+                    .AllowAnyHeader() // Разрешить любые заголовки
                     .AllowCredentials(); // Разрешить использование credentials
             });
         });

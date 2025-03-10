@@ -18,7 +18,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: path.resolve(__dirname, 'ClientApp'), // Указываем целевую директорию
+    outDir: path.resolve(`${__dirname}/../AspApiBasic`, 'ClientApp'), // Указываем целевую директорию
     emptyOutDir: true, // Очищать целевую директорию перед сборкой
   },
   server: {

@@ -38,7 +38,7 @@ const Counter: React.FC = () => {
 
     const resetCounter = async () => {
         try {
-            const response = await apiClient.post<number>('/counter/reset');
+            const response = await apiClient.put<number>('/counter/reset');
             setCount(response.data);
         } catch (error) {
             console.error('Ошибка при сбросе счетчика:', error);

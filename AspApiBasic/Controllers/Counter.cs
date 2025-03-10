@@ -36,7 +36,7 @@ public class CounterController : ControllerBase
     }
 
     // POST: api/counter/reset
-    [HttpPost("reset")]
+    [HttpPut("reset")]
     public IActionResult ResetCounter()
     {
         // Сбрасываем счетчик до 0
